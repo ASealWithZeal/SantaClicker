@@ -7,9 +7,11 @@ public class UIManager : MonoBehaviour
 {
     public Text months;
     public Text gifts;
+    public Button hireButton = null;
+    public List<Text> hireText = null;
 
-    private int monthNum = 12;
-    private int giftNum = 0;
+    public GameObject info = null;
+    public GameObject settings = null;
 
     // Start is called before the first frame update
     void Start()
@@ -23,16 +25,32 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void HitSanta()
+    public void SetText(int giftNum, int monthNum)
     {
-        monthNum--;
-        if (monthNum <= 0)
+        gifts.text = giftNum.ToString() + "\nGifts";
+        months.text = monthNum.ToString() + "\nMonths";
+    }
+
+    public void SetButton()
+    {
+        hireButton.image.color = new Color(0.5f, 0.5f, 0.5f);
+        hireButton.interactable = false;
+        hireText[0].text = "";
+        hireText[1].fontStyle = FontStyle.Bold;
+        hireText[1].text = "HIRED";
+    }
+
+    public void OpenScene(GameObject obj)
+    {
+        obj.SetActive(!obj.activeSelf);
+        if (obj == info && info.activeSelf)
         {
-            monthNum = 12;
-            giftNum++;
-            gifts.text = giftNum.ToString() + "\nGifts";
+            settings.SetActive(false);
         }
 
-        months.text = monthNum.ToString() + "\nMonths";
+        if (obj == settings && settings.activeSelf)
+        {
+            info.SetActive(false);
+        }
     }
 }
