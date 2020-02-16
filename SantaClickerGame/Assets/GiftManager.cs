@@ -20,6 +20,9 @@ public class GiftManager : MonoBehaviour
     {
         if (gifts >= 1 && ui.hireText[1].text != "HIRED")
             ui.hireButton.interactable = true;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 
     public void HitSanta()
