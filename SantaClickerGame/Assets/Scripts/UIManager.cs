@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public Text months;
     public Text gifts;
+    public Text monthsPerSecond;
     public Button hireButton = null;
     public List<Text> hireText = null;
 
@@ -25,15 +26,19 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void SetText(int giftNum, int monthNum)
+    public void SetText(int giftNum, int monthNum, float monthsPerSecond)
     {
         gifts.text = giftNum.ToString() + "\nGifts";
         months.text = monthNum.ToString() + "\nMonths";
+        this.monthsPerSecond.text = monthsPerSecond.ToString() + "\nMonths per Second";
     }
 
     public void SetButton()
     {
         hireButton.image.color = new Color(0.5f, 0.5f, 0.5f);
+        ColorBlock colors = hireButton.colors;
+        colors.disabledColor = Color.white;
+        hireButton.colors = colors;
         hireButton.interactable = false;
         hireText[0].text = "";
         hireText[1].fontStyle = FontStyle.Bold;
