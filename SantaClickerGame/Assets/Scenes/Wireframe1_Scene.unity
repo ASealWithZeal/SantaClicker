@@ -4785,7 +4785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gifts: 0
-  NLTGifts: 100
+  NLTGifts: 50
   months: 12
   monthsPerClick: 1
   monthsPerSecond: 0

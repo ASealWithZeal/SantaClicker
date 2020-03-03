@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
 
     private void CheckDonateButton(float percent)
     {
-        if (percent > 0.5f) donateButton.interactable = true;
+        if (percent >= 0.5f) donateButton.interactable = true;
         else donateButton.interactable = false;
     }
 
