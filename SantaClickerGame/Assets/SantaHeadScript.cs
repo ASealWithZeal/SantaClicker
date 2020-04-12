@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class SantaHeadScript : MonoBehaviour
+public class SantaHeadScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public List<Color> santaColors;
+    public List<Sprite> santaImages;
     public Image theImage;
     private bool pulsing = true;
     private bool canPulse = true;
@@ -42,21 +44,22 @@ public class SantaHeadScript : MonoBehaviour
     public void CheckSantaColor(float percent)
     {
         if (percent < 0.5f)
-            theImage.color = santaColors[0];
+            theImage.sprite = santaImages[0];
         else if (percent >= 0.5f && percent < 0.75f)
-            theImage.color = santaColors[1];
+            theImage.sprite = santaImages[1];
         else if (percent >= 0.75f)
-            theImage.color = santaColors[2];
+            theImage.sprite = santaImages[2];
     }
 
-    //public void OnPointerEnter(PointerEventData pointer)
-    //{
-    //    theImage.rectTransform.localScale = new Vector3(1.05f, 1.05f);
-    //    canPulse = false;
-    //}
-    //
-    //public void OnPointerExit(PointerEventData pointer)
-    //{
-    //    canPulse = true;
-    //}
+    public void OnPointerEnter(PointerEventData pointer)
+    {
+        theImage.rectTransform.localScale = new Vector3(1.05f, 1.05f);
+        canPulse = false;
+    }
+    
+    public void OnPointerExit(PointerEventData pointer)
+    {
+        theImage.rectTransform.localScale = new Vector3(1f, 1f);
+        canPulse = true;
+    }
 }

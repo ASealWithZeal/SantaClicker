@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public Text months;
     public Text gifts;
     public Text monthsPerSecond;
+    public Text monthsPerClick;
     public List<HireButton> hireButton = null;
     public List<UpgradeButton> upgradeButton = null;
     public List<Text> hireText = null;
@@ -16,9 +17,12 @@ public class UIManager : MonoBehaviour
 
     public SantaHeadScript santaHead = null;
     public Button donateButton = null;
+    public SnowflakeGenerator snowflakeGenerator = null;
 
     public GameObject info = null;
     public GameObject settings = null;
+    public GameObject present = null;
+    public Transform giftParent = null;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +44,13 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < upgradeButton.Count; ++i)
             upgradeButton[i].CheckButton(gifts);
         santaHead.CheckSantaColor((float)gifts / NLTGifts);
+        snowflakeGenerator.ChangeValues((float)gifts / NLTGifts);
         CheckDonateButton((float)gifts / NLTGifts);
+    }
+
+    public void SpawnGift()
+    {
+        GameObject g = Instantiate(present, new Vector3(0, 80, 0), Quaternion.identity, giftParent);
     }
 
     private void CheckDonateButton(float percent)
@@ -49,11 +59,12 @@ public class UIManager : MonoBehaviour
         else donateButton.interactable = false;
     }
 
-    public void SetText(int giftNum, int monthNum, float monthsPerSecond)
+    public void SetText(int giftNum, int monthNum, float monthsPerSecond, float monthsPerClick)
     {
         gifts.text = giftNum.ToString() + "\nGifts";
-        months.text = monthNum.ToString() + "\nMonths";
+        months.text = monthNum.ToString() + " Months\n'til Christmas!";
         this.monthsPerSecond.text = monthsPerSecond.ToString() + "\nMonths per Second";
+        this.monthsPerClick.text = monthsPerClick.ToString() + "\nMonths per Click";
 
         NLT[0].SetText(giftNum.ToString());
     }

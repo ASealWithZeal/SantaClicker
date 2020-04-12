@@ -12,6 +12,7 @@ namespace Managers
         public float monthsPerClick = 1.0f;
         public float monthsPerSecond = 0.0f;
         public UIManager ui = null;
+        public GameObject santaText = null;
 
         // Start is called before the first frame update
         void Start()
@@ -34,7 +35,7 @@ namespace Managers
         {
             months -= (monthsPerSecond * Time.deltaTime);
             CheckEarnGifts();
-            ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond);
+            ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond, monthsPerClick);
         }
 
         /// <summary>
@@ -50,16 +51,19 @@ namespace Managers
 
                 ui.UnhireButtons();
                 ui.UnpurchaseButtons();
-                ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond);
+                ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond, monthsPerClick);
             }
         }
 
         public void HitSanta()
         {
+            GameObject tempText = Instantiate(santaText, ui.santaHead.transform);
+            tempText.GetComponent<ClickText>().Init(monthsPerClick);
+
             months -= monthsPerClick;
             CheckEarnGifts();
 
-            ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond);
+            ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond, monthsPerClick);
         }
 
         private void CheckEarnGifts()
@@ -67,6 +71,7 @@ namespace Managers
             float n = months;
             if (months <= 0)
             {
+                ui.SpawnGift();
                 months = (12 + n);
                 SetGifts(1);
             }
@@ -76,14 +81,14 @@ namespace Managers
         {
             SetGifts(-cost);
             monthsPerSecond += increment;
-            ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond);
+            ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond, monthsPerClick);
         }
 
         public void IncreaseMonthsPerClick(int cost, float increment)
         {
             SetGifts(-cost);
             monthsPerClick += increment;
-            ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond);
+            ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond, monthsPerClick);
         }
 
         public void DonateGifts()
@@ -97,7 +102,7 @@ namespace Managers
             // Resets buttons and text
             ui.UnhireButtons();
             ui.NLT[1].SetText(NLTGifts.ToString());
-            ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond);
+            ui.SetText(gifts, Mathf.CeilToInt(months), monthsPerSecond, monthsPerClick);
         }
 
         private void SetGifts(int inc)

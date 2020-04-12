@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - ClickText
     - HireButton
     - Managers.GiftManager
     - SantaHeadScript
@@ -83,15 +84,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12658}
     - Class: 114
-      Script: {instanceID: 12724}
+      Script: {instanceID: 12700}
     - Class: 114
-      Script: {instanceID: 12892}
+      Script: {instanceID: 12726}
     - Class: 114
-      Script: {instanceID: 13106}
+      Script: {instanceID: 12894}
     - Class: 114
-      Script: {instanceID: 13122}
+      Script: {instanceID: 13108}
     - Class: 114
-      Script: {instanceID: 13138}
+      Script: {instanceID: 13124}
+    - Class: 114
+      Script: {instanceID: 13140}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -135,7 +138,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 59cce466dd7ab353d11a5509d58fb05e
+      Hash: dd36c16de1cad4109315b77158b798a3
     assemblyName: Assembly-CSharp.dll
     namespaceName: Managers
     className: GiftManager
@@ -309,7 +312,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 743cb613cf2ebf8db0fda085e90adb35
+      Hash: bf386b1113d461cf3d8ae4f6610b672f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SantaHeadScript
@@ -393,7 +396,7 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
-      Hash: 07177e7a32e87847fffb5ee799bedda5
+      Hash: bb1d0fec507af6cca5fcd62c2e6fc4ff
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -433,6 +436,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ClickText
   - hash:
       serializedVersion: 2
       Hash: f336e086360abe49a3323e5f1583c35a
@@ -562,4 +571,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/Wireframe1_Scene.unity
-  playerPath: C:/Users/zalea/Desktop/SantaClicker/Prototype/SantaClickerGame.exe
+  playerPath: C:/Users/zalea/Desktop/JosephSiehl_SantaClickerPrototype/SantaClickerGame.exe

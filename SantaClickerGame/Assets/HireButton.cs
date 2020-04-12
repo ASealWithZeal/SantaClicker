@@ -68,9 +68,9 @@ public class HireButton : MonoBehaviour
         hired = true;
 
         // Changes Button Visuals
-        button.image.color = new Color(0.5f, 0.5f, 0.5f);
+        button.image.color = new Color(0.8901961f, 0.6352941f, 0.4078431f);
         ColorBlock colors = button.colors;
-        colors.disabledColor = Color.white;
+        colors.disabledColor = new Color(0.2f, 0.2f, 0.2f);
         button.colors = colors;
         button.interactable = false;
 
@@ -88,9 +88,9 @@ public class HireButton : MonoBehaviour
         hired = false;
 
         // Changes Button Visuals
-        button.image.color = new Color(1f, 1f, 1f);
+        button.image.color = new Color(0.8901961f, 0.6352941f, 0.4078431f);
         ColorBlock colors = button.colors;
-        colors.disabledColor = new Color(0.1960784f, 0.1960784f, 0.1960784f, 0.3921569f);
+        colors.disabledColor = new Color(0.1960784f, 0.1960784f, 0.1960784f, 0.6862745f);
         button.colors = colors;
         button.interactable = false;
 
