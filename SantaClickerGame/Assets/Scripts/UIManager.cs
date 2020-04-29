@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public SantaHeadScript santaHead = null;
     public Button donateButton = null;
     public SnowflakeGenerator snowflakeGenerator = null;
+    public Settings settingsScript;
 
     public GameObject info = null;
     public GameObject settings = null;
@@ -50,7 +51,8 @@ public class UIManager : MonoBehaviour
 
     public void SpawnGift()
     {
-        GameObject g = Instantiate(present, new Vector3(0, 80, 0), Quaternion.identity, giftParent);
+        if (settingsScript.particlesToggle.isOn)
+            Instantiate(present, new Vector3(0, 80, 0), Quaternion.identity, giftParent);
     }
 
     private void CheckDonateButton(float percent)

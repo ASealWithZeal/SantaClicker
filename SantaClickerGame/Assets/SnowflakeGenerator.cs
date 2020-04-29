@@ -10,19 +10,28 @@ public class SnowflakeGenerator : MonoBehaviour
     public float speed = 1.0f;
 
     public GameObject snowflake;
+    public Settings settings;
 
     // Update is called once per frame
     void Update()
     {
-        seconds += Time.deltaTime;
-        if (seconds >= secondsToSpawn)
+        if (settings.particlesToggle.isOn)
         {
-            seconds = 0;
-            for (int i = 0; i < spawnsPerSecond; ++i)
+            seconds += Time.deltaTime;
+            if (seconds >= secondsToSpawn)
             {
-                GameObject g = Instantiate(snowflake, transform);
-                g.GetComponent<SnowflakeScript>().Init(speed);
+                seconds = 0;
+                for (int i = 0; i < spawnsPerSecond; ++i)
+                {
+                    GameObject g = Instantiate(snowflake, transform);
+                    g.GetComponent<SnowflakeScript>().Init(speed);
+                }
             }
+        }
+        else
+        {
+            for (int i = 0; i < transform.childCount; ++i)
+                Destroy(transform.GetChild(0).gameObject);
         }
     }
 
